@@ -49,7 +49,10 @@ export default {
   props: [],
   data () {
     return {
-      question: {}
+      question: {
+        voteUp: 0,
+        voteDown: 0
+      }
     }
   },
   methods: {
@@ -58,7 +61,7 @@ export default {
       axios({
         url: `questions/${this.$route.params.questionId}`,
         method: 'get',
-        data: {
+        headers: {
           userId: localStorage.id
         }
       })
@@ -140,6 +143,10 @@ export default {
       })
     }
   },
+
+  created() {
+    this.fetchDetail()
+  },
   
   computed: {
     voteUpTotal () {
@@ -160,10 +167,6 @@ export default {
       if (this.$store.state.isLogin === true) return true
       else return false
     }
-  },
-
-  created() {
-    this.fetchDetail()
   }
 }
 </script>

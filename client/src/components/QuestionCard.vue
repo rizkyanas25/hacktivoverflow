@@ -2,7 +2,7 @@
   <a @click.prevent="toDetail" style="text-decoration:none; color:black"> 
     <div>
       <h1>{{question.title}}</h1>
-      <h5>Ask by {{question.author}} at {{time}}</h5>
+      <h5>Asked by {{question.author}} at {{time}}</h5>
     </div>
 
     <div class="right" style="margin-right:30px; margin-top:-30px">

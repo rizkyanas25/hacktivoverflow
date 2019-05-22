@@ -38,13 +38,13 @@ class QuestionController {
   }
 
   static findOne(req, res) {
-    console.log(req.body.userId)
+    console.log(req.headers)
     Question
     .findOne(ObjectId(req.params.questionId))
     .then(data => {
-      if (data.viewers.indexOf(req.body.userId) === -1) {
+      if (data.viewers.indexOf(req.headers.userid) === -1) {
         return Question.findByIdAndUpdate(ObjectId(req.params.questionId), {
-          $push: {viewers: req.body.userId}
+          $push: {viewers: req.headers.userid}
         })
       }
       else {
