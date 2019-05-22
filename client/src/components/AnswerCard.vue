@@ -6,6 +6,8 @@
     </div>
 
     <div v-show="isLogin" class="right" style="margin-right:30px; margin-top:-30px">
+        <a v-if="check()" style="margin-right:10px">Edit</a>
+        <a v-if="check()" style="margin-right:20px; color:red">Delete</a>
 
       <router-link to="" style="text-decoration:none; color:black">
         <i @click="upVote" class="far fa-thumbs-up"></i>  
@@ -94,12 +96,16 @@ export default {
       .catch(err => {
         console.log(err)
       })
-    }
+    },
+    check() {
+      if(this.answer.userId === localStorage.id) return true
+      else return false
+    },
   },
   computed: {
     time() {
-      moment(this.answer.createdAt).format();  
-      return moment(this.answer.createdAt).startOf('day').fromNow(); 
+      let time = moment(this.answer.createdAt).format();  
+      return moment(time).startOf('day').fromNow();  
     },
     isLogin() {
       if (this.$store.state.isLogin === true) return true

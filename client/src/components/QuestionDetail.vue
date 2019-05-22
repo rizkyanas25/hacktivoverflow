@@ -156,8 +156,8 @@ export default {
       return this.question.voteDown.length
     },
     time() {
-      moment(this.question.createdAt).format();  
-      return moment(this.question.createdAt).startOf('day').fromNow(); 
+      let time = moment(this.question.createdAt).format();  
+      return moment(time).startOf('day').fromNow(); 
     },
     check() {
       if(this.question.userId === localStorage.id) return true

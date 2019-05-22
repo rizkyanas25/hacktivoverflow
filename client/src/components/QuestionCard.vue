@@ -44,8 +44,8 @@ export default {
   },
   computed: {
     time() {
-      moment(this.question.createdAt).format();  
-      return moment(this.question.createdAt).startOf('day').fromNow(); 
+      let time = moment(this.question.createdAt).format();  
+      return moment(time).startOf('day').fromNow(); 
     }
   }
 }
